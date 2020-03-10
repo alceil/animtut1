@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
@@ -11,7 +9,7 @@ class Page1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: RaisedButton(onPressed: (){Navigator.of.push(_createroute());},
+        child: RaisedButton(onPressed: (){Navigator.of(context).push(_createroute());},
             child: Text("Go")
         ),
       ),
@@ -24,8 +22,13 @@ Route _createroute(){
     transitionsBuilder: (context,animation,secondaryAnimation,child){
       var begin=Offset(0.0,1.0);
       var end=Offset.zero;
-      var offsetAnimation=Tween(begin:begin ,end:end);
-      return child;
+      var curve=Curves.ease;
+      var tween=Tween(begin:begin ,end:end).chain(CurveTween(curve: curve));
+      var offsetAnimation=animation.drive(tween);
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
     }
   );
 }
