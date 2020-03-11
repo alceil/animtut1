@@ -1,48 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 void main() => runApp(MaterialApp(
-  home:MyCustomForm() ,
+  home:MyHomePage()
 ));
-class MyCustomForm extends StatefulWidget {
+
+
+class MyHomePage extends StatefulWidget {
+  final items=List<String>.generate(20,(i)=>"Items ${i+1}");
   @override
-  _MyCustomFormState createState() => _MyCustomFormState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyCustomFormState extends State<MyCustomForm> {
-  FocusNode myfocusnode;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    myfocusnode=FocusNode();
-  }
-  @override
-  void dispose() {
-    myfocusnode.dispose();
-    // TODO: implement dispose
-    super.dispose();
-  }
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Textfield Focus'),
-      ),
-      body: Column(
-        children: <Widget>[
-          TextField(
-            autofocus: true,
-          ),
-          TextField(
-            focusNode: myfocusnode,
-          )
-
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){FocusScope.of(context).requestFocus(myfocusnode);},child: Icon(Icons.edit),
-      ),
+      appBar: AppBar(title: Text('Inkwell 4 u'),),
+      body: ,
     );
   }
 }
-
