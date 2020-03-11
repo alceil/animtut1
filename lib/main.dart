@@ -1,31 +1,13 @@
 import 'package:flutter/material.dart';
-void main() => runApp(MaterialApp(
-home:TabBarDemo(),
-));
-class TabBarDemo extends StatelessWidget {
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+  final appTitle='Form Validation Demo';
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length:3,
-      child: Scaffold(
+    return MaterialApp(
+      home: Scaffold(
         appBar: AppBar(
-          title: Text('TabBar Demo'),
-          bottom: TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.directions_car),),
-              Tab(icon: Icon(Icons.directions_transit),),
-              Tab(icon: Icon(Icons.directions_bike),)
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            Icon(Icons.directions_car),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike)
-
-
-          ],
+          title: Text(appTitle),
         ),
       ),
     );
