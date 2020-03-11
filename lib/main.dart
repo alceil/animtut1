@@ -16,24 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('item deletion'),),
-      body:ListView.builder(itemCount: items.length,
-          itemBuilder: (context,index){
-        final item=items[index];
-        return Dismissible(
-
-          key:Key(item),
-
-          onDismissed: (direction){
-            setState(() {
-              items.removeAt(index);
-            });
-            Scaffold.of(context).showSnackBar(SnackBar(content: Text('$item Dismmised'),));
-
-          },
-          background: Container(color:Colors.red),
-          child: ListTile(title: Text("$item"),),
-        );
-          }) ,
+      body:Image.network('https://picsum.photos/250?image=9') ,
     );
   }
 }
