@@ -1,49 +1,40 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-  home: Page1(),
+void main() => runApp(MyApp(
+
 ));
-class Page1 extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  final appTitle='Drawer Demo';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: RaisedButton(onPressed: (){Navigator.of(context).push(_createroute());},
-            child: Text("Go")
-        ),
-      ),
+    return MaterialApp(
+      title: appTitle,
+      home: MyHomepage(title: appTitle),
+
     );
   }
 }
-Route _createroute(){
-  return PageRouteBuilder(
-    pageBuilder: (context,animation,secondaryAnimation)=>Page2(),
-    transitionsBuilder: (context,animation,secondaryAnimation,child){
-      var begin=Offset(0.0,1.0);
-      var end=Offset.zero;
-      var curve=Curves.ease;
-      var tween=Tween(begin:begin ,end:end).chain(CurveTween(curve: curve));
-      var offsetAnimation=animation.drive(tween);
-      return SlideTransition(
-        position: offsetAnimation,
-        child: child,
-      );
-    }
-  );
+class MyHomepage extends StatefulWidget {
+  final String title;
+  MyHomepage({Key key,this.title}):super(key:key);
+  @override
+  _MyHomepageState createState() => _MyHomepageState();
 }
-class Page2 extends StatelessWidget {
+
+class _MyHomepageState extends State<MyHomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text("Page1"),
+      appBar: AppBar(
+        title: Text(title),
       ),
     );
   }
 }
 
-
-
-
+class bhatbhat extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
