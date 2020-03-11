@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   final appTitle='Form Validation Demo';
@@ -27,25 +28,27 @@ class _CustomFormState extends State<CustomForm> {
     return Form(
       key: _formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
-            validator: (value){
-              if(value.isEmpty){
-                return 'Enter some text kid';
-              }
-              else
-                return null;
-            },
-          ),
-          RaisedButton(
-            onPressed: (){
-              if(_formKey.currentState.validate())
-                {
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Processing data'),));
 
-                }
-            },
-            child: Text('Submit'),
+            decoration: InputDecoration(
+                labelText: 'Enter something kid!'
+            ),
+
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: RaisedButton(
+              onPressed: (){
+                if(_formKey.currentState.validate())
+                  {
+                    Scaffold.of(context).showSnackBar(SnackBar(content: Text('Processing data'),));
+
+                  }
+              },
+              child: Text('Submit'),
+            ),
           )
 
         ],
