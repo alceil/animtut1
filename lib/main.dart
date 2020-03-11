@@ -18,22 +18,30 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('item deletion'),),
-      body:ListView(
-        children: <Widget>[
-          ListTile(
-            leading:Icon(Icons.map) ,
-            title: Text('Map'),
-          ),
-          ListTile(
-            leading:Icon(Icons.album) ,
-            title: Text('Album'),
-          ),
-          ListTile(
-            leading:Icon(Icons.phone) ,
-            title: Text('Phone'),
-          )
-        ],
-      )
-    );
+      body:Container(
+        margin: EdgeInsets.symmetric(vertical: 20.0),
+        height: 200,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Container(
+              width: 160,
+              color: Colors.red,
+            ),
+            Container(
+              width: 160,
+              color: Colors.blue,
+            ),
+            Container(
+              width: 160,
+              color: Colors.green,
+            ),
+            Container(
+              width: 160,
+              color: Colors.yellow,
+            )
+          ],
+        ),
+      )    );
   }
 }
