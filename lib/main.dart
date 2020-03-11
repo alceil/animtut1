@@ -18,17 +18,22 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('item deletion'),),
-      body:Stack(
+      body:ListView(
         children: <Widget>[
-          Center(
-            child:CircularProgressIndicator() ,
+          ListTile(
+            leading:Icon(Icons.map) ,
+            title: Text('Map'),
           ),
-          Center(
-            child: CachedNetworkImage(placeholder: (context,url){CircularProgressIndicator();}, imageUrl: 'https://picsum.photos/250?image=9'),
+          ListTile(
+            leading:Icon(Icons.album) ,
+            title: Text('Album'),
+          ),
+          ListTile(
+            leading:Icon(Icons.phone) ,
+            title: Text('Phone'),
           )
         ],
       )
-
     );
   }
 }
