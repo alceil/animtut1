@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-  home: MyHomePage(),
+void main() => runApp(Demo(
 
 ));
+class Demo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home:Scaffold(
+        appBar: AppBar(
+          title: Text('Snack Bar tutorial'),
+        ),
+        body: MyHomePage(),
+      ),
+
+    );
+  }
+}
+
 class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Snack Bar Demo'),
-      ),
-      body: Center(
+    return Center(
         child: RaisedButton(
           onPressed: (){
             final snackBar=SnackBar(
@@ -24,9 +34,9 @@ class MyHomePage extends StatelessWidget {
             );
             Scaffold.of(context).showSnackBar(snackBar);
           },
+          
           child: Text('Show snackbar'),
         ),
-      ),
-    );
+      );
   }
 }
