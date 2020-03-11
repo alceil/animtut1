@@ -5,37 +5,28 @@ void main() => runApp(MaterialApp(
 
 ));
 class MyHomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawer Demo'),
-
+        title: Text('Snack Bar Demo'),
       ),
-      body: Center(child: Text('My Page'),),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue
-
+      body: Center(
+        child: RaisedButton(
+          onPressed: (){
+            final snackBar=SnackBar(
+              content: Text('Yay! a snackbar'),
+              action: SnackBarAction(
+                label: 'undo',
+                onPressed: (){},
               ),
-            ),
-            ListTile(
-              title:Text('Item 1') ,onTap: (){Navigator.pop(context);},
-
-            ),
-            ListTile(
-              title:Text('Item 2') ,onTap: (){Navigator.pop(context);},
-            ),
-          ],
+            );
+            Scaffold.of(context).showSnackBar(snackBar);
+          },
+          child: Text('Show snackbar'),
         ),
       ),
-
     );
   }
 }
-
-
