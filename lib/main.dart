@@ -1,40 +1,41 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp(
+void main() => runApp(MaterialApp(
+  home: MyHomePage(),
 
 ));
-class MyApp extends StatelessWidget {
-  final appTitle='Drawer Demo';
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: appTitle,
-      home: MyHomepage(title: appTitle),
-
-    );
-  }
-}
-class MyHomepage extends StatefulWidget {
-  final String title;
-  MyHomepage({Key key,this.title}):super(key:key);
-  @override
-  _MyHomepageState createState() => _MyHomepageState();
-}
-
-class _MyHomepageState extends State<MyHomepage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text('Drawer Demo'),
+
       ),
+      body: Center(child: Text('My Page'),),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue
+
+              ),
+            ),
+            ListTile(
+              title:Text('Item 1') ,onTap: (){Navigator.pop(context);},
+
+            ),
+            ListTile(
+              title:Text('Item 2') ,onTap: (){Navigator.pop(context);},
+            ),
+          ],
+        ),
+      ),
+
     );
   }
 }
 
-class bhatbhat extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
+
