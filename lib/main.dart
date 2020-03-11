@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 void main() => runApp(MaterialApp(
-home:OrientationTest(),
-    theme: ThemeData(
-    brightness: Brightness.dark,
-    primaryColor: Colors.lightBlue[100],
-    accentColor: Colors.cyan[100],
-)
+home:TabBarDemo(),
 ));
-class OrientationTest extends StatelessWidget {
+class TabBarDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Orientation Demo'),
-      ),
-        body:Center(
-          child: Container(
-            color: Theme.of(context).accentColor,
-            child: Text('Text with a background'),
+    return DefaultTabController(
+      length:3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('TabBar Demo'),
+          bottom: TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.directions_car),),
+              Tab(icon: Icon(Icons.directions_transit),),
+              Tab(icon: Icon(Icons.directions_bike),)
+            ],
           ),
-        )
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            Icon(Icons.directions_car),
+            Icon(Icons.directions_transit),
+            Icon(Icons.directions_bike)
+
+
+          ],
+        ),
+      ),
     );
   }
 }
