@@ -9,11 +9,38 @@ class MyCustomForm extends StatefulWidget {
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
+  FocusNode myfocusnode;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    myfocusnode=FocusNode();
+  }
+  @override
+  void dispose() {
+    myfocusnode.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Textfield Focus'),
+      ),
+      body: Column(
+        children: <Widget>[
+          TextField(
+            autofocus: true,
+          ),
+          TextField(
+            focusNode: myfocusnode,
+          )
+
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){FocusScope.of(context).requestFocus(myfocusnode);},child: Icon(Icons.edit),
       ),
     );
   }
