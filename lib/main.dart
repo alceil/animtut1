@@ -11,11 +11,33 @@ class MyHomePage extends StatelessWidget {
         title: Text("Damn"),
       ),
       body: ListView.builder(itemCount:items.length,itemBuilder: (context,index){
-        return ();
-      }),
+        final item=Items[index];
+        if (item is HeadingItem)
+        {
+        return ListTile(
+          title: Text(item.heading),
+
+        );
+        }
+        else if(item is MessageItem)
+        {
+          return ListTile(
+            title: Text(item.sender),
+            subtitle:Text(item.body) ,
+          );
+        }
+      }
+      ),
     );
   }
 }
+abstract class ListItem{}
 
-
-
+class HeadingItem extends ListItem{
+  final String heading;
+  HeadingItem(this.heading);
+}
+class MessageItem extends ListItem{
+  final String sender,body;
+  MessageItem(this.sender,this.body);
+}
