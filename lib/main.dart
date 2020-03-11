@@ -1,42 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(Demo(
-
+void main() => runApp(MaterialApp(
+home:OrientationTest()
 ));
-class Demo extends StatelessWidget {
+class OrientationTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home:Scaffold(
-        appBar: AppBar(
-          title: Text('Snack Bar tutorial'),
-        ),
-        body: MyHomePage(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Orientation Demo'),
       ),
-
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: RaisedButton(
-          onPressed: (){
-            final snackBar=SnackBar(
-              content: Text('Yay! a snackbar'),
-              action: SnackBarAction(
-                label: 'undo',
-                onPressed: (){},
-              ),
-            );
-            Scaffold.of(context).showSnackBar(snackBar);
-          },
-          
-          child: Text('Show snackbar'),
-        ),
-      );
-  }
-}
