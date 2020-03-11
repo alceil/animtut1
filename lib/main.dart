@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:transparent_image/transparent_image.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 void main() => runApp(MaterialApp(
   home:MyHomePage()
 ));
@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child:CircularProgressIndicator() ,
           ),
           Center(
-            child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: 'https://picsum.photos/250?image=9'),
+            child: CachedNetworkImage(placeholder: (context,url){CircularProgressIndicator();}, imageUrl: 'https://picsum.photos/250?image=9'),
           )
         ],
       )
