@@ -11,20 +11,37 @@ class MyApp extends StatelessWidget {
   }
 }
 class MyHomePage extends StatelessWidget {
-  final  items=List<String>.generate(100, (i)=>'Item $i') ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Long list'),
       ),
-      body:ListView.builder(itemCount: items.length,
-          itemBuilder: (context,index){
-        return ListTile(title: Text('${items[index]}'),
-        );
-      }
+      body:Center(
+        child: RaisedButton(onPressed: ()
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailsPage()));
+        },
+          child: Text('Open Route'),
+        ),
       ) ,
     );
+  }
+}
+class DetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Second Route'),),
+      body: Center(
+        child: RaisedButton(onPressed: ()
+        {
+          Navigator.pop(context);
+        },
+          child: Text('Go Back'),
+        ),
+      ),
+    ) ;
   }
 }
 
