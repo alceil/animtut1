@@ -85,9 +85,22 @@ class _MyAppState extends State<MyApp> {
           child: FutureBuilder<Album>(
             future: futureAlbum,
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data.title);
-              } else if (snapshot.hasError) {
+              if(snapshot.connectionState==ConnectionState.done)
+                {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: <Widget>[
+                        Text('${snapshot.data?.title??'Deleted'}'),
+                        RaisedButton(
+                          onPressed: (){setState(() {
+                            futureAlbum=deleteAlbum(snapshot.data.id.toString());
+                          });},
+                          child: Text('Delete Data'),
+                        )
+                      ],
+                    );
+                  }
+                }else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
 
