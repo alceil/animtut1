@@ -6,7 +6,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        '/':(context)=>MyHomePage(),
+        '/second':(context)=>DetailsPage(),
+      },
     );
   }
 }
@@ -20,7 +24,7 @@ class MyHomePage extends StatelessWidget {
       body:Center(
         child: RaisedButton(onPressed: ()
         {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailsPage()));
+          Navigator.pushNamed(context, '/second');
         },
           child: Text('Open Route'),
         ),
