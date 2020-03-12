@@ -11,13 +11,19 @@ class MyApp extends StatelessWidget {
   }
 }
 class MyHomePage extends StatelessWidget {
+  final  items=List<String>.generate(100, (i)=>'Item $i') ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Long list'),
       ),
-      body: ,
+      body:ListView.builder(itemCount: items.length,
+          itemBuilder: (context,index){
+        return ListTile(title: Text('${items[index]}'),
+        );
+      }
+      ) ,
     );
   }
 }
