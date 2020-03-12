@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-void main() => runApp(MaterialApp(
-  home:MyHomePage()
+void main() => runApp(MyApp(
+
 ));
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
 class MyHomePage extends StatelessWidget {
   final items=List<ListItem>.generate(1200, (i)=>i%6==0?HeadingItem("Heading $i"):MessageItem("Sender $i","Meassage body $i"));
   @override
@@ -11,7 +20,7 @@ class MyHomePage extends StatelessWidget {
         title: Text("Damn"),
       ),
       body: ListView.builder(itemCount:items.length,itemBuilder: (context,index){
-        final item=Items[index];
+        final item=items[index];
         if (item is HeadingItem)
         {
         return ListTile(
